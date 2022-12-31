@@ -5,6 +5,7 @@
 import json
 
 import sys
+
 sys.path.append('..')
 from base.spider import Spider
 import requests
@@ -15,7 +16,15 @@ class Spider(Spider):
 
     def __init__(self):
         self.config = {
-            "dplayer": {"tpm3u8":"淘片资源","xkm3u8":"想看资源","sdm3u8":"闪电资源","bdxm3u8":"北斗资源","hnm3u8":"红牛资源","wjm3u8":"无尽资源","kbm3u8":"快播资源","zjm3u8":"自建云","tt":"TT云","tkm3u8":"天空资源","mahua":"麻花资源","baidu":"千度云","bilibili":"二次云","migutv":"咪咕云","aqd":"爱情岛播放源","youku":"优酷播放源","wy":"微软云","qq":"腾讯播放源","sohu":"搜狐播放源","qiyi":"奇艺播放源","letv":"乐视播放源","pptv":"PPTV播放源","mgtv":"芒果播放源","panda":"熊猫云","kuyun":"酷云播放源","zuidam3u8":"ZDm3u8播放源","zkm3u8":"zkm3u8播放源","dbm3u8":"百度资源","bjm3u8":"八戒播放源","123kum3u8":"123资源","xigua":"西瓜视频","m3u8":"m3u8播放源"}
+            "dplayer": {"tpm3u8": "淘片资源", "xkm3u8": "想看资源", "sdm3u8": "闪电资源", "bdxm3u8": "北斗资源",
+                        "hnm3u8": "红牛资源", "wjm3u8": "无尽资源", "kbm3u8": "快播资源", "zjm3u8": "自建云",
+                        "tt": "TT云", "tkm3u8": "天空资源", "mahua": "麻花资源", "baidu": "千度云",
+                        "bilibili": "二次云", "migutv": "咪咕云", "aqd": "爱情岛播放源", "youku": "优酷播放源",
+                        "wy": "微软云", "qq": "腾讯播放源", "sohu": "搜狐播放源", "qiyi": "奇艺播放源",
+                        "letv": "乐视播放源", "pptv": "PPTV播放源", "mgtv": "芒果播放源", "panda": "熊猫云",
+                        "kuyun": "酷云播放源", "zuidam3u8": "ZDm3u8播放源", "zkm3u8": "zkm3u8播放源",
+                        "dbm3u8": "百度资源", "bjm3u8": "八戒播放源", "123kum3u8": "123资源", "xigua": "西瓜视频",
+                        "m3u8": "m3u8播放源"}
         }
         self.home_url = 'https://www.88hd.com'
         self.header = {
@@ -66,7 +75,7 @@ class Spider(Spider):
         for vod in vodList:
             name = vod.xpath("./@title")[0]
             pic = vod.xpath("./img/@data-original")[0]
-            mark = vod.xpath("./p//text()")
+            mark = vod.xpath('./p[@class="other"]/i/text()')
             sid = vod.xpath("./@href")[0]
             sid = self.regStr(sid, "/detail/(\\S+).html")
             videos.append({
@@ -91,7 +100,7 @@ class Spider(Spider):
         for a in item_path_list:
             name = a.xpath("./@title")[0]
             pic = a.xpath("./img/@data-original")[0]
-            mark = a.xpath("./p//text()")[0]
+            mark = a.xpath('./p[@class="other"]/i/text()')[0]
             sid = a.xpath("./@href")[0]
             sid = self.regStr(sid, "(\\S+).html")
             videos.append({
@@ -181,7 +190,7 @@ class Spider(Spider):
         for vod in vodList:
             name = vod.xpath("./@title")[0]
             pic = vod.xpath("./img/@data-original")[0]
-            mark = vod.xpath("./p//text()")[0]
+            mark = vod.xpath('./p[@class="other"]/i/text()')[0]
             sid = vod.xpath("./@href")[0]
             sid = self.regStr(sid, "(\\S+).html")
             videos.append({
@@ -224,4 +233,11 @@ class Spider(Spider):
         return result
 
     def localProxy(self, param):
-        return [200, "video/MP2T", action, ""]
+        # return [200, "video/MP2T", action, ""]
+        pass
+
+
+if __name__ == '__main__':
+    spider = Spider()
+    res = spider.categoryContent('1', '1', None, None)
+    print(json.dumps(res, ensure_ascii=False))
