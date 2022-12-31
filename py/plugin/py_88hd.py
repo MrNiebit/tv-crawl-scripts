@@ -233,8 +233,14 @@ class Spider(Spider):
         return result
 
     def localProxy(self, param):
-        # return [200, "video/MP2T", action, ""]
-        pass
+        action = {
+            'url': '',
+            'header': '',
+            'param': '',
+            'type': 'string',  # 文本内容
+            'after': ''
+        }
+        return [200, "video/MP2T", action, ""]
 
 
 if __name__ == '__main__':
