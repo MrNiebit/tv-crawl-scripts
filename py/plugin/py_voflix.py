@@ -225,4 +225,10 @@ class Spider(Spider):  # 元类 默认的元类 type
 	header = {}
 
 	def localProxy(self,param):
+		action = {}
 		return [200, "video/MP2T", action, ""]
+
+if __name__ == '__main__':
+	spider = Spider()
+	res = spider.searchContent('龙珠', None)
+	print(res)
