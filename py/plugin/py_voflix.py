@@ -8,6 +8,291 @@ import time
 import base64
 
 class Spider(Spider):  # 元类 默认的元类 type
+
+	def __init__(self):
+		self.config = {
+			"player": {
+				"dplayer": {
+						"duoduozy": {
+							"show": "VOFLIX_\u56fd\u5185",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"LINE406": {
+							"show": "LINE406",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"LINE407": {
+							"show": "LINE407",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"LINE408": {
+							"show": "LINE408",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"p300": {
+							"show": "LINE300",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"p301": {
+							"show": "LINE301",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"line402-\u65e5\u8bed": {
+							"show": "LINE402",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"LINE400": {
+							"show": "LINE400",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"line401": {
+							"show": "LINE401",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"iframe268": {
+							"show": "LINE268",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"iframe290": {
+							"show": "LINE290",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"iframe291": {
+							"show": "LINE291",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"iframe296": {
+							"show": "LINE296",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"iframe297": {
+							"show": "LINE297",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"iframe307": {
+							"show": "LINE307",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"iframe308": {
+							"show": "LINE308",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"iframe309": {
+							"show": "LINE309",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"line301": {
+							"show": "LINE333",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"line302": {
+							"show": "LINE302",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"LINE405": {
+							"show": "LINE405",
+							"des": "\u66f4\u591a\u6781\u901f\u7ebf\u8def\u8bf7\u8bbf\u95eeAPP",
+							"ps": "0",
+							"parse": ""
+						},
+						"LINE409": {
+							"show": "LINE409",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"banquan": {
+							"show": "\u5df2\u4e0b\u67b6",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"iframe261": {
+							"show": "LINE261",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"iframe265": {
+							"show": "LINE265",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"iframe278": {
+							"show": "LINE278",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"iframe306": {
+							"show": "LINE306",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"iframe317": {
+							"show": "LINE317",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"xg_app_player": {
+							"show": "app\u5168\u5c40\u89e3\u6790",
+							"des": "",
+							"ps": "1",
+							"parse": ""
+						},
+						"iframe257": {
+							"show": "LINE257",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"iframe263": {
+							"show": "LINE263",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"iframe258": {
+							"show": "LINE258",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"iframe267": {
+							"show": "LINE267",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"iframe": {
+							"show": "LINE200",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"iframe262": {
+							"show": "LINE262",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"iframe266": {
+							"show": "LINE266",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"dplayer3": {
+							"show": "\u64ad\u653e\u7ebf\u8def3",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"dplayer2": {
+							"show": "\u64ad\u653e\u7ebf\u8def2",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"dplayer": {
+							"show": "\u64ad\u653e\u7ebf\u8def1",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"xunlei1": {
+							"show": "\u767e\u5ea6\u4e91\u76d8",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"if101": {
+							"show": "VOFLIX_\u6d77\u5916",
+							"des": "",
+							"ps": "0",
+							"parse": "https:\/\/demo.if101.tv\/player\/?url="
+						},
+						"aliyun": {
+							"show": "\u963f\u91cc\u4e91\u76d8",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"xunlei2": {
+							"show": "\u8fc5\u96f7\u4e91\u76d8",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"": {
+							"show": "",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"LINE1080": {
+							"show": "LINE1080",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"app": {
+							"show": "LINEAPP",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						},
+						"kuake": {
+							"show": "\u5938\u514b\u7f51\u76d8",
+							"des": "",
+							"ps": "0",
+							"parse": ""
+						}
+				}
+			}
+		}
+
 	def getName(self):
 		return "Voflix"
 	def init(self,extend=""):
@@ -197,14 +482,17 @@ class Spider(Spider):  # 元类 默认的元类 type
 			if(script.startswith("var player_")):
 				target = script[script.index('{'):]
 				jo = json.loads(target)
-				break;
-
-		parseUrl = 'https://play.shtpin.com/xplay/?url={0}'.format(jo['url'])
+				break
+		js_url = "https://www.voflix.com/static/player/%s.js?v=1.3" % jo['from']
+		res = self.fetch(js_url, headers=self.header)
+		parseUrl = self.regStr(res.text, 'src="(.*?)\'') + jo['url']
+		# parseUrl = 'https://play.shtpin.com/xplay/?url={0}'.format(jo['url'])
 		parseRsp = self.fetch(parseUrl,headers={'referer':'https://www.voflix.com/'})
 
 		configStr = self.regStr(parseRsp.text,'var config = ({[\\s\\S]+})')
 		configJo = json.loads(configStr)
-		playUrl = 'https://play.shtpin.com/xplay/555tZ4pvzHE3BpiO838.php?tm={0}&url={1}&vkey={2}&token={3}&sign=F4penExTGogdt6U8'
+		playUrl = parseUrl.split('?url=')[0] + '555tZ4pvzHE3BpiO838.php?tm={0}&url={1}&vkey={2}&token={3}&sign=F4penExTGogdt6U8'
+		# playUrl = 'https://play.shtpin.com/xplay/555tZ4pvzHE3BpiO838.php?tm={0}&url={1}&vkey={2}&token={3}&sign=F4penExTGogdt6U8'
 		playUrl.format(time.time(),configJo['url'],configJo['vkey'],configJo['token'])
 		playRsp = self.fetch(playUrl.format(time.time(),configJo['url'],configJo['vkey'],configJo['token'])
 			,headers={'referer':'https://www.voflix.com/'})		
@@ -230,5 +518,6 @@ class Spider(Spider):  # 元类 默认的元类 type
 
 if __name__ == '__main__':
 	spider = Spider()
-	res = spider.searchContent('龙珠', None)
+	# res = spider.searchContent('龙珠', None)
+	res = spider.playerContent(None, '10689-1-1', None)
 	print(res)
