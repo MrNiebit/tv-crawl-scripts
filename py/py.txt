@@ -30,15 +30,24 @@
 
        {
         "key": "py_88hd",
-        "name": "88影视",
+        "name": "py | 88影视",
         "type": 3,
-        "api": "py_88hd",
+        "api": "Py_88hd",
         "searchable": 1,
         "quickSearch": 1,
         "filterable": 1,
         "ext": "clan://TVBox/py/plugin/py_88hd.py"
        },
-
+      {
+        "key": "py_yanetflix",
+        "name": "py | 鸭奈飞",
+        "type": 3,
+        "api": "py_yanetflix",
+        "searchable": 1,
+        "quickSearch": 1,
+        "filterable": 1,
+        "ext": "clan://TVBox/py/plugin/py_yanetflix.py"
+       },
        {
         "key": "py_ikan",
         "name": "爱看影视",
