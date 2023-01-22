@@ -190,22 +190,24 @@ class Spider(Spider):  # 元类 默认的元类 type
             if (script.startswith("var player_")):
                 target = script[script.index('{'):]
                 jo = json.loads(target)
-                break;
+                break
         result = {}
         parseUrl = ""
         playerConfig = self.config['player']
         if jo['from'] in self.config['player']:
-            parser = self.config['player'][jo['from']]
+            # parser = self.config['player'][jo['from']]
             originUrl = jo['url']
-            parseUrl = parser['parse']
+            # parseUrl = parser['parse']
 
-            result["parse"] = parser['ps']
-            if not parseUrl.startswith('http'):
-                result["playUrl"] = self.home_url + parseUrl
-            else:
-                result["playUrl"] = parseUrl
+            # result["parse"] = parser['ps']
+            result["parse"] = "0"
+            result["playUrl"] = ""
+            # if not parseUrl.startswith('http'):
+            #     result["playUrl"] = self.home_url + parseUrl
+            # else:
+            #     result["playUrl"] = parseUrl
 
-            result["url"] = originUrl
+            result["url"] = unquote(originUrl)
             result["header"] = ''
         return result
 
@@ -640,13 +642,13 @@ class Spider(Spider):  # 元类 默认的元类 type
     }
 
     def localProxy(self, param):
+        action = {}
         return [200, "video/MP2T", action, ""]
         
 
 
 if __name__ == '__main__':
     spider = Spider()
-    res = spider.playerContent(None, '318423-2-1', None)
-    res['url'] = unquote(res['url'])
+    res = spider.playerContent(None, '324580-4-1', None)
     print(json.dumps(res, ensure_ascii=False))
     pass
