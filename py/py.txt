@@ -32,7 +32,7 @@
         "key": "py_88hd",
         "name": "py | 88影视",
         "type": 3,
-        "api": "Py_88hd",
+        "api": "py_88hd",
         "searchable": 1,
         "quickSearch": 1,
         "filterable": 1,
