@@ -1,12 +1,14 @@
 # coding=utf-8
 # !/usr/bin/python
 import sys
+
 sys.path.append('..')
 from base.spider import Spider
 import json
 import re
 import difflib
 import urllib
+
 
 class Spider(Spider):  # 元类 默认的元类 type
     def getName(self):
@@ -25,38 +27,30 @@ class Spider(Spider):  # 元类 默认的元类 type
     def homeContent(self, filter):
         result = {}
         cateManual = {
-            "🔮嗨翻":"https://pan.hikerfans.com",
+            "🔮嗨翻": "https://pan.hikerfans.com",
             "小雅": "http://alist.xiaoya.pro",
+            "9T": "https://drive.9t.ee",
             "七米蓝": "https://al.chirmyram.com",
-              "🚆资源小站":"https://pan.142856.xyz",
-              "🌤晴园的宝藏库":"https://alist.52qy.repl.co",
-              "🐭米奇妙妙屋":"https://anime.mqmmw.ga",
-              "💂小兵组网盘影视":"https://6vv.app",
-              "📀小光盘":"https://alist.xiaoguanxiaocheng.life",
-              "🐋一只鱼":"https://alist.youte.ml",
-              "🌊七米蓝":"https://al.chirmyram.com", 
-              "🌴非盘":"http://www.feifwp.top",
-              "🥼帅盘":"https://hi.shuaipeng.wang",
-              "🐉神族九帝":"https://alist.shenzjd.com",
-              "☃姬路白雪":"https://pan.jlbx.xyz",
-              "🎧听闻网盘":"https://wangpan.sangxuesheng.com",
-              "💾DISK":"http://124.222.140.243:8080",
-              "🌨云播放":"https://quanzi.laoxianghuijia.cn",
-              "✨星梦":"https://pan.bashroot.top",
-              "🌊小江":"https://dyj.me",
-              "💫触光":"https://pan.ichuguang.com",
-              "🕵好汉吧":"https://8023.haohanba.cn",
-              "🥗AUNEY":"http://121.227.25.116:8008",
-              "🎡资源小站":"https://960303.xyz/",
-              "🐝神器云": "https://quanzi.laoxianghuijia.cn",
-              "🏝fenwe":"http://www.fenwe.tk:5244",
-              "🎢轻弹浅唱":"https://g.xiang.lol"
+            "🌤晴园的宝藏库": "https://alist.52qy.repl.co",
+            "🐭米奇妙妙屋": "https://anime.mqmmw.ga",
+            "🐋一只鱼": "https://alist.youte.ml",
+            "🌊七米蓝": "https://al.chirmyram.com",
+            "🥼帅盘": "https://hi.shuaipeng.wang",
+            "🐉神族九帝": "https://alist.shenzjd.com",
+            "☃姬路白雪": "https://pan.jlbx.xyz",
+            "💾DISK": "http://124.222.140.243:8080",
+            "🌨云播放": "https://quanzi.laoxianghuijia.cn",
+            "✨星梦": "https://pan.bashroot.top",
+            "🌊小江": "https://dyj.me",
+            "💫触光": "https://pan.ichuguang.com",
+            "🎡资源小站": "https://960303.xyz/",
+            "🐝神器云": "https://quanzi.laoxianghuijia.cn"
         }
         classes = []
         for k in cateManual:
             classes.append({
                 'type_name': k,
-				"type_flag": "1",
+                "type_flag": "1",
                 'type_id': cateManual[k]
             })
         result['class'] = classes
@@ -72,6 +66,7 @@ class Spider(Spider):  # 元类 默认的元类 type
 
     ver = ''
     baseurl = ''
+
     def getVersion(self, gtid):
         param = {
             "path": '/'
@@ -99,7 +94,7 @@ class Spider(Spider):  # 元类 默认的元类 type
         baseurl = self.baseurl
         if tid.count('/') == 2:
             tid = tid + '/'
-        pat = tid.replace(baseurl,"")
+        pat = tid.replace(baseurl, "")
         param = {
             "path": '/' + pat
         }
@@ -148,7 +143,7 @@ class Spider(Spider):  # 元类 默认的元类 type
                 remark = str(sz) + fs
             aid = baseurl + aid + vod['name']
             videos.append({
-                "vod_id":  aid,
+                "vod_id": aid,
                 "vod_name": vod['name'],
                 "vod_pic": img,
                 "vod_tag": tag,
@@ -192,8 +187,10 @@ class Spider(Spider):  # 元类 默认的元类 type
             dList = djo['data']['content']
         playUrl = ''
         for tempd in dList:
-            if 'mp4' in tempd['name'] or 'mkv' in tempd['name'] or 'TS' in tempd['name'] or 'flv' in tempd['name'] or 'rmvb' in tempd['name'] or 'mp3' in tempd['name'] or 'flac' in tempd['name'] or 'wav' in tempd['name']:
-            # 开始匹配视频
+            if 'mp4' in tempd['name'] or 'mkv' in tempd['name'] or 'TS' in tempd['name'] or 'flv' in tempd[
+                'name'] or 'rmvb' in tempd['name'] or 'mp3' in tempd['name'] or 'flac' in tempd['name'] or 'wav' in \
+                    tempd['name']:
+                # 开始匹配视频
                 # 视频名称 name
                 name = tempd['name']
                 # 视频链接 url
@@ -208,7 +205,7 @@ class Spider(Spider):  # 元类 默认的元类 type
                     suball = difflib.get_close_matches(vname, vstr, len(dList), cutoff=0.8)
                 for sub in suball:
                     if sub.endswith(".ass") or sub.endswith(".srt"):
-                        subt = '@@@' + baseurl + dir + '/' +sub
+                        subt = '@@@' + baseurl + dir + '/' + sub
                 ifsubt = 'subt' in locals().keys()
                 if ifsubt is False:
                     playUrl = playUrl + '{0}${1}#'.format(name, url)
@@ -322,4 +319,5 @@ class Spider(Spider):  # 元类 默认的元类 type
     header = {}
 
     def localProxy(self, param):
+        action = {}
         return [200, "video/MP2T", action, ""]
