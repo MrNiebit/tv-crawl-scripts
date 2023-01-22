@@ -326,17 +326,7 @@
 		"quickSearch": 1,
 		"filterable": 1,
 		"ext": "https://cdn.jsdelivr.net/gh/MrNiebit/tv-crawl-scripts@master/py/plugin/py_bilimd.py"
-	},  
-	 {
-		"key": "py_genmov",
-		"name": "Py | 跟剧",
-		"type": 3,
-		"api": "py_genmov",
-		"searchable": 1,
-		"quickSearch": 1,
-		"filterable": 1,
-		"ext": "https://cdn.jsdelivr.net/gh/MrNiebit/tv-crawl-scripts@master/py/plugin/py_genmov.py"
-	}, 
+	},
 	    {
             "key" : "py_yixi",
             "name" : "Py | 一席话",
@@ -461,7 +451,7 @@
 		"filterable": 1,
 		"ext": "https://cdn.jsdelivr.net/gh/MrNiebit/tv-crawl-scripts@master/py/plugin/py_gimytv.py"
 	}, 
-	    {
+    {
 		"key": "py_genmov",
 		"name": "Py | 跟剧",
 		"type": 3,
@@ -470,7 +460,7 @@
 		"quickSearch": 1,
 		"filterable": 1,
 		"ext": "https://cdn.jsdelivr.net/gh/MrNiebit/tv-crawl-scripts@master/py/plugin/py_genmov.py"
-	    },
+    },
 	{
 		"key": "py_voflix",
 		"name": "Py | voflix",
@@ -482,7 +472,7 @@
 		"ext": "https://cdn.jsdelivr.net/gh/MrNiebit/tv-crawl-scripts@master/py/plugin/py_voflix.py"
 	    },
 	    {
-		"key": "py_genmov",
+		"key": "py_xsxp",
 		"name": "Py | 相声小品",
 		"type": 3,
 		"api": "py_相声小品",
