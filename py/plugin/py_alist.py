@@ -26,8 +26,8 @@ class Spider(Spider):  # 元类 默认的元类 type
         result = {}
         cateManual = {
             "🔮嗨翻":"https://pan.hikerfans.com",
-              "🦀9T(Adult)":"https://drive.9t.ee",
-              "🐱梓澪の妙妙屋":"https://xn--i0v44m.xyz",
+            "小雅": "http://alist.xiaoya.pro",
+            "七米蓝": "https://al.chirmyram.com",
               "🚆资源小站":"https://pan.142856.xyz",
               "🌤晴园的宝藏库":"https://alist.52qy.repl.co",
               "🐭米奇妙妙屋":"https://anime.mqmmw.ga",

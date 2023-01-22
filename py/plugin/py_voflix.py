@@ -8,6 +8,7 @@ import time
 import base64
 
 class Spider(Spider):  # 元类 默认的元类 type
+
 	def getName(self):
 		return "Voflix"
 	def init(self,extend=""):
@@ -197,14 +198,17 @@ class Spider(Spider):  # 元类 默认的元类 type
 			if(script.startswith("var player_")):
 				target = script[script.index('{'):]
 				jo = json.loads(target)
-				break;
-
-		parseUrl = 'https://play.shtpin.com/xplay/?url={0}'.format(jo['url'])
+				break
+		js_url = "https://www.voflix.com/static/player/%s.js?v=1.3" % jo['from']
+		res = self.fetch(js_url, headers=self.header)
+		parseUrl = self.regStr(res.text, 'src="(.*?)\'') + jo['url']
+		# parseUrl = 'https://play.shtpin.com/xplay/?url={0}'.format(jo['url'])
 		parseRsp = self.fetch(parseUrl,headers={'referer':'https://www.voflix.com/'})
 
 		configStr = self.regStr(parseRsp.text,'var config = ({[\\s\\S]+})')
 		configJo = json.loads(configStr)
-		playUrl = 'https://play.shtpin.com/xplay/555tZ4pvzHE3BpiO838.php?tm={0}&url={1}&vkey={2}&token={3}&sign=F4penExTGogdt6U8'
+		playUrl = parseUrl.split('?url=')[0] + '555tZ4pvzHE3BpiO838.php?tm={0}&url={1}&vkey={2}&token={3}&sign=F4penExTGogdt6U8'
+		# playUrl = 'https://play.shtpin.com/xplay/555tZ4pvzHE3BpiO838.php?tm={0}&url={1}&vkey={2}&token={3}&sign=F4penExTGogdt6U8'
 		playUrl.format(time.time(),configJo['url'],configJo['vkey'],configJo['token'])
 		playRsp = self.fetch(playUrl.format(time.time(),configJo['url'],configJo['vkey'],configJo['token'])
 			,headers={'referer':'https://www.voflix.com/'})		
@@ -225,4 +229,11 @@ class Spider(Spider):  # 元类 默认的元类 type
 	header = {}
 
 	def localProxy(self,param):
+		action = {}
 		return [200, "video/MP2T", action, ""]
+
+if __name__ == '__main__':
+	spider = Spider()
+	# res = spider.searchContent('龙珠', None)
+	res = spider.playerContent(None, '10689-1-1', None)
+	print(res)

@@ -30,15 +30,24 @@
 
        {
         "key": "py_88hd",
-        "name": "88影视",
+        "name": "py | 88影视",
         "type": 3,
-        "api": "py_88hd",
+        "api": "Py_88hd",
         "searchable": 1,
         "quickSearch": 1,
         "filterable": 1,
         "ext": "clan://TVBox/py/plugin/py_88hd.py"
        },
-
+      {
+        "key": "py_yanetflix",
+        "name": "py | 鸭奈飞",
+        "type": 3,
+        "api": "py_yanetflix",
+        "searchable": 1,
+        "quickSearch": 1,
+        "filterable": 1,
+        "ext": "clan://TVBox/py/plugin/py_yanetflix.py"
+       },
        {
         "key": "py_ikan",
         "name": "爱看影视",
@@ -462,7 +471,36 @@
 		"filterable": 1,
 		"ext": "clan://TVBox/py/plugin/py_genmov.py"
 	    },
-	
+	{
+		"key": "py_voflix",
+		"name": "Py | voflix",
+		"type": 3,
+		"api": "py_voflix",
+		"searchable": 1,
+		"quickSearch": 1,
+		"filterable": 1,
+		"ext": "clan://TVBox/py/plugin/py_voflix.py"
+	    },
+	    {
+		"key": "py_genmov",
+		"name": "Py | 相声小品",
+		"type": 3,
+		"api": "py_相声小品",
+		"searchable": 1,
+		"quickSearch": 1,
+		"filterable": 1,
+		"ext": "clan://TVBox/py/plugin/相声小品.py"
+	    },
+	  {
+		"key": "py_音乐合集",
+		"name": "Py | 音乐合集",
+		"type": 3,
+		"api": "py_音乐合集",
+		"searchable": 1,
+		"quickSearch": 1,
+		"filterable": 1,
+		"ext": "clan://TVBox/py/plugin/音乐合集.py"
+	    },
     {"key":"Gitcafe2","name":"阿里纸条","type":"3","api":"csp_Gitcafe","searchable":"1","quickSearch":"1","filterable":"1","ext":"clan://TVBox/jar/alitoken.txt","jar":"https://share.nite07.com/api/v3/file/source/32180/bhioodmh.jar?sign=fT6PTHJR7YVw_FgAn0JdAbdhWGo628lESMFre58anMw%3D%3A0"},
 	{"key":"Yisou","name":"易搜(仅搜索)","type":3,"api":"csp_Yisou","playerType":1,"searchable":1,"quickSearch":1,"filterable":0,"ext":"clan://TVBox/jar/alitoken.txt","jar": "clan://TVBox/jar/xzy1029.jar"},
     {"key":"AliPS","name":"盘搜(仅搜索)","type":3,"api":"csp_AliPS","searchable":1,"playerType":1,"quickSearch":1,"filterable":1,"ext": "clan://TVBox/jar/alitoken.txt","jar": "clan://TVBox/jar/xzy1029.jar"},
