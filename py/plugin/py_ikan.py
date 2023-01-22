@@ -57,7 +57,12 @@ class Spider(Spider):
 			aid = self.regStr(reg=r'/voddetail/(.*?)/', src=aid)
 			img = a.xpath(".//div[contains(@class, 'myui-vodlist__box')]/a/@data-original")[0]
 			name = a.xpath(".//div[contains(@class, 'myui-vodlist__box')]/a/@title")[0]
-			remark = a.xpath(".//span[contains(@class, 'pic-text text-right')]/text()")[0]
+			remark_res = a.xpath(".//span[contains(@class, 'pic-text text-right')]/text()")
+			if remark_res is None or len(remark_res) < 1:
+				remark = ''
+			else:
+				remark = remark_res[0]
+
 			videos.append({
 				"vod_id": aid,
 				"vod_name": name,
@@ -212,3 +217,9 @@ class Spider(Spider):
 			'after':''
 		}
 		return [200, "video/MP2T", action, ""]
+
+
+if __name__ == '__main__':
+	spider = Spider()
+	res = spider.categoryContent('2', '1', None, None)
+	print(json.dumps(res, ensure_ascii=False))
