@@ -69,7 +69,6 @@ class Spider(Spider):  # 元类 默认的元类 type
     def categoryContent(self, tid, pg, filter, extend):
         result = {}
         url = self.base_url + '/{0}/page/{1}'.format(tid, pg)
-        print(url)
         rsp = self.fetch(url, headers=self.cz_header)
         root = self.html(self.cleanText(rsp.text))
         aList = root.xpath("//div[contains(@class,'mi_cont')]//ul/li")
@@ -77,7 +76,8 @@ class Spider(Spider):  # 元类 默认的元类 type
         for a in aList:
             name = a.xpath('./a/img/@alt')[0]
             pic = a.xpath('./a/img/@data-original')[0]
-            mark = a.xpath("./a/div[@class='jidi']/span/text()")[0]
+            mark_reg = a.xpath("./a/div[@class='jidi']/span/text()")
+            mark = mark_reg[0] if mark_reg is not None and len(mark_reg) > 0 else ''
             sid = a.xpath("./a/@href")[0]
             sid = self.regStr(sid, "/movie/(\\S+).html")
             videos.append({
@@ -258,6 +258,6 @@ class Spider(Spider):  # 元类 默认的元类 type
 
 if __name__ == '__main__':
     spider = Spider()
-    res = spider.categoryContent('dsj', 1, None, None)
+    res = spider.categoryContent('dm', 1, None, None)
     print(json.dumps(res, ensure_ascii=False))
     pass
