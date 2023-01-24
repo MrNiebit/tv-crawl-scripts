@@ -237,6 +237,7 @@ class Spider(Spider):
         # print(stream_url)
         if stream_url is not None and stream_url != '':
             result['parse'] = 0
+            result["playUrl"] = ''
             result['url'] = stream_url
         result["header"] = ''
         return result
@@ -256,4 +257,5 @@ if __name__ == '__main__':
     spider = Spider()
     # res = spider.categoryContent('1', '1', None, None)
     res = spider.playerContent(None, '/vod-play-id-213261-src-3-num-1', None)
+    # res = spider.detailContent(['/guochanju/202301/213261'])
     print(json.dumps(res, ensure_ascii=False))
