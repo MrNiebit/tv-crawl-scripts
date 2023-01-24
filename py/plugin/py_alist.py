@@ -29,7 +29,6 @@ class Spider(Spider):  # 元类 默认的元类 type
         cateManual = {
             "🔮嗨翻": "https://pan.hikerfans.com",
             "小雅": "http://alist.xiaoya.pro",
-            "9T": "https://drive.9t.ee",
             "七米蓝": "https://al.chirmyram.com",
             "🌤晴园的宝藏库": "https://alist.52qy.repl.co",
             "🐭米奇妙妙屋": "https://anime.mqmmw.ga",
@@ -44,7 +43,9 @@ class Spider(Spider):  # 元类 默认的元类 type
             "🌊小江": "https://dyj.me",
             "💫触光": "https://pan.ichuguang.com",
             "🎡资源小站": "https://960303.xyz/",
-            "🐝神器云": "https://quanzi.laoxianghuijia.cn"
+            "🐝神器云": "https://quanzi.laoxianghuijia.cn",
+             "9T": "https://drive.9t.ee",
+
         }
         classes = []
         for k in cateManual:
