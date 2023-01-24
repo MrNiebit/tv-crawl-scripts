@@ -2,13 +2,19 @@
 # !/usr/bin/python
 import sys
 import re
+
 sys.path.append('..')
 from base.spider import Spider
 import urllib.parse
+import json
+
 
 class Spider(Spider):  # 元类 默认的元类 type
     def getName(self):
         return "创艺影视"
+
+    def __init__(self):
+        self.home_url = 'https://www.30dian.cn'
 
     def init(self, extend=""):
         print("============{0}============".format(extend))
@@ -36,16 +42,34 @@ class Spider(Spider):  # 元类 默认的元类 type
         return result
 
     def homeVideoContent(self):
+        rsp = self.fetch(self.home_url)
+        root = self.html(rsp.text)
+        videos = []
+        item_list = root.xpath('/html/body/div[2]/div/div[2]/div[@class="myui-panel-box clearfix"]/div[@class="myui-panel_bd clearfix"]/ul/li')
+        for item in item_list:
+            href = item.xpath('./div/a/@href')[0]
+            tid = self.regStr(href, '/voddetail/(\\S+).html')
+            name = item.xpath('./div/a/@title')[0]
+            pic = item.xpath('./div/a/@data-original')[0]
+            remark = item.xpath('./div/a//span[@class="pic-tag pic-tag-top"]/span/text()')[0]
+            videos.append({
+                "vod_id": tid,
+                "vod_name": name,
+                "vod_pic": pic,
+                "vod_remarks": remark
+            })
+
         result = {
-            'list': []
+            'list': videos
         }
         return result
 
     def categoryContent(self, tid, pg, filter, extend):
         result = {}
-        header = {"User-Agent": "Mozilla/5.0 (Linux; Android 4.4.2; Nexus 4 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.114 Mobile Safari/537.36"}
+        header = {
+            "User-Agent": "Mozilla/5.0 (Linux; Android 4.4.2; Nexus 4 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.114 Mobile Safari/537.36"}
         url = 'https://www.30dian.cn/vodtype/{0}-{1}.html'.format(tid, pg)
-        rsp = self.fetch(url,headers=header)
+        rsp = self.fetch(url, headers=header)
         root = self.html(self.cleanText(rsp.text))
         aList = root.xpath("//div[@class='myui-panel myui-panel-bg clearfix']/div/div/ul/li")
         videos = []
@@ -70,8 +94,9 @@ class Spider(Spider):  # 元类 默认的元类 type
     def detailContent(self, array):
         tid = array[0]
         url = 'https://www.30dian.cn/voddetail/{0}.html'.format(tid)
-        header = {"User-Agent": "Mozilla/5.0 (Linux; Android 4.4.2; Nexus 4 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.114 Mobile Safari/537.36"}
-        rsp = self.fetch(url,headers=header)
+        header = {
+            "User-Agent": "Mozilla/5.0 (Linux; Android 4.4.2; Nexus 4 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.114 Mobile Safari/537.36"}
+        rsp = self.fetch(url, headers=header)
         root = self.html(self.cleanText(rsp.text))
         divContent = root.xpath("//div[@class='col-lg-wide-75 col-md-wide-7 col-xs-1 padding-0']")[0]
         title = divContent.xpath(".//div[@class='myui-content__detail']/h1/text()")[0]
@@ -98,7 +123,7 @@ class Spider(Spider):  # 元类 默认的元类 type
             content = info.xpath('string(.)')
             flag = "分类" in content
             if flag == True:
-                infon = content.replace("\t","").replace("\n","").strip().split('\r')
+                infon = content.replace("\t", "").replace("\n", "").strip().split('\r')
                 for inf in infon:
                     if inf.startswith('分类'):
                         vod['type_name'] = inf.replace("分类：", "")
@@ -163,7 +188,7 @@ class Spider(Spider):  # 元类 默认的元类 type
             pic = a.xpath(".//a[contains(@class,'myui-vodlist__thumb')]//@data-original")[0]
             mark = a.xpath(".//span[@class='tag']/text()")[0]
             sid = a.xpath(".//div[@class='detail']/h4/a/@href")[0]
-            sid = self.regStr(sid,'/voddetail/(\\S+).html')
+            sid = self.regStr(sid, '/voddetail/(\\S+).html')
             videos.append({
                 "vod_id": sid,
                 "vod_name": name,
@@ -182,15 +207,16 @@ class Spider(Spider):  # 元类 默认的元类 type
         if id == '00000':
             return {}
         url = 'https://www.30dian.cn/vodplay/{0}.html'.format(id)
-        rsp = self.fetch(url,headers=header)
+        rsp = self.fetch(url, headers=header)
         root = self.html(self.cleanText(rsp.text))
         scripts = root.xpath("//div[@class='embed-responsive clearfix']/script[@type='text/javascript']/text()")[0]
         ukey = re.findall(r"url(.*)url_next", scripts)[0].replace('"', "").replace(',', "").replace(':', "")
         purl = urllib.parse.unquote(ukey)
         result["parse"] = 0
         result["playUrl"] = ''
-        result["url"] =purl
-        result["header"] = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36"}
+        result["url"] = purl
+        result["header"] = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36"}
         return result
 
     config = {
@@ -214,3 +240,11 @@ class Spider(Spider):  # 元类 默认的元类 type
             'after': ''
         }
         return [200, "video/MP2T", action, ""]
+
+
+if __name__ == '__main__':
+    spider = Spider()
+    # res = spider.homeVideoContent()
+    # res = spider.categoryContent('30', '1', None, None)
+    res = spider.playerContent(None, '67861-1-1', None)
+    print(json.dumps(res, ensure_ascii=False))

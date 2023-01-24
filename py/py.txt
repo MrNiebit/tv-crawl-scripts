@@ -17,7 +17,7 @@
 		"ext": "https://cdn.jsdelivr.net/gh/MrNiebit/tv-crawl-scripts@master/py/plugin/py_douban.py"
 	}, 
 	
-	    {
+    {
 		"key": "py_czspp",
 		"name": "Py | 厂长",
 		"type": 3,
@@ -26,7 +26,18 @@
 		"quickSearch": 1,
 		"filterable": 1,
 		"ext": "https://cdn.jsdelivr.net/gh/MrNiebit/tv-crawl-scripts@master/py/plugin/py_czspp.py"
-	}, 
+	},
+
+	{
+		"key": "py_cokemv",
+		"name": "Py | COKEMV",
+		"type": 3,
+		"api": "py_cokemv",
+		"searchable": 1,
+		"quickSearch": 1,
+		"filterable": 1,
+		"ext": "https://cdn.jsdelivr.net/gh/MrNiebit/tv-crawl-scripts@master/py/plugin/py_cokemv.py"
+	},
 
        {
         "key": "py_88hd",
