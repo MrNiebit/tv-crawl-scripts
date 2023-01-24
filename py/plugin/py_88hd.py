@@ -222,13 +222,22 @@ class Spider(Spider):
         from_list = mac_from.split('$$$')
         src = int(self.regStr(id, 'src-(\d+)-'))
         num = int(self.regStr(id, 'num-(\d+)'))
-        print(src, num)
+        # print(src, num)
         rsp = self.fetch('https://www.88hd.com/player/%s.js' % from_list[src - 1], headers=self.header)
         player_url = self.regStr(rsp.text, 'src="(.*?)\'')
         result = {}
         result["parse"] = 1
         result["playUrl"] = player_url
+        detail_url = player_url + video_src_list[src - 1][num - 1]
         result["url"] = video_src_list[src - 1][num - 1]
+
+        # print(detail_url)
+        rsp = self.fetch(detail_url)
+        stream_url = self.regStr(rsp.text, 'video_url = \'(.*?)\'')
+        # print(stream_url)
+        if stream_url is not None and stream_url != '':
+            result['parse'] = 0
+            result['url'] = stream_url
         result["header"] = ''
         return result
 
@@ -245,5 +254,6 @@ class Spider(Spider):
 
 if __name__ == '__main__':
     spider = Spider()
-    res = spider.categoryContent('1', '1', None, None)
+    # res = spider.categoryContent('1', '1', None, None)
+    res = spider.playerContent(None, '/vod-play-id-213261-src-3-num-1', None)
     print(json.dumps(res, ensure_ascii=False))
