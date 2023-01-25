@@ -11,6 +11,10 @@ class Spider(Spider):  # 元类 默认的元类 type
     def getName(self):
         return "Libvio"
 
+    def __init__(self):
+        self.headers = self.header.copy()
+        self.headers['referer'] = 'https://www.libvio.me/'
+
     def init(self, extend=""):
         print("============{0}============".format(extend))
         pass
@@ -210,7 +214,7 @@ class Spider(Spider):  # 元类 默认的元类 type
         parseUrl = self.regStr(scriptRsp.text, 'src="(\\S+url=)')
         if len(parseUrl) > 0:
             path = jo['url'] + '&next=' + jo['link_next'] + '&id=' + jo['id'] + '&nid=' + nid
-            parseRsp = self.fetch(parseUrl + path,headers=self.header)
+            parseRsp = self.fetch(parseUrl + path, headers=self.headers)
             realUrl = self.regStr(parseRsp.text, "(?<=urls\\s=\\s').*?(?=')", 0)
             if len(realUrl) > 0:
                 result["parse"] = 0
@@ -231,4 +235,12 @@ class Spider(Spider):  # 元类 默认的元类 type
         pass
 
     def localProxy(self, param):
+        action = {}
         return [200, "video/MP2T", action, ""]
+
+
+if __name__ == '__main__':
+    spider = Spider()
+    res = spider.playerContent(None, '714889207-1-1', None)
+    print(json.dumps(res, ensure_ascii=False))
+    pass
