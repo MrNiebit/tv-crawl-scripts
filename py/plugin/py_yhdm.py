@@ -174,7 +174,7 @@ class Spider(Spider):
         root = self.html(res.text)
         play_url = root.xpath('//div[@id="playbox"]/@data-vid')[0]
         return {
-            'pare': 0,
+            'parse': 0,
             'url': play_url.split('$')[0]
         }
 
