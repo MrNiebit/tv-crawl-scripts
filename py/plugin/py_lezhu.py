@@ -81,6 +81,7 @@ class Spider(Spider):  # 元类 默认的元类 type
                 params[idx] = extend[fp]
         suffix = '-'.join(params)
         url = 'http://www.lezhutv.com/type/{0}.html'.format(suffix)
+        print(url)
 
         rsp = self.fetch(url, headers=self.header)
         root = self.html(rsp.text)
@@ -89,7 +90,8 @@ class Spider(Spider):  # 元类 默认的元类 type
         for vod in vodList:
             name = vod.xpath("./@title")[0]
             pic = vod.xpath("./@data-original")[0]
-            mark = vod.xpath(".//span/text()")[0]
+            mark_reg_list = vod.xpath(".//span/text()")
+            mark = mark_reg_list[0] if mark_reg_list is not None else ''
             sid = vod.xpath("./@href")[0]
             sid = self.regStr(sid, "/detail/(\\S+).html")
             videos.append({
@@ -209,9 +211,14 @@ class Spider(Spider):  # 元类 默认的元类 type
         url = 'http://www.lezhutv.com/play/{0}.html'.format(id)
         rsp = self.fetch(url, headers=self.header)
         view_path = self.regStr(rsp.text, 'var view_path = \'(\\S+)\';')
-        result["parse"] = 1
-        result["playUrl"] = 'http://www.lezhutv.com/hls2/index.php?url='
-        result["url"] = view_path
+        detail_url = 'http://www.lezhutv.com/hls2/index.php?url=' + view_path
+        rsp = self.fetch(detail_url, headers=self.header)
+        json_str = self.regStr(rsp.text, "response = '(.*?)'")
+        json_data = json.loads(json_str)
+
+        result["parse"] = 0
+        # result["playUrl"] = ''
+        result["url"] = json_data['media']['url']
         result["header"] = ''
         return result
 
@@ -228,4 +235,13 @@ class Spider(Spider):  # 元类 默认的元类 type
     }
 
     def localProxy(self, param):
+        action = {}
         return [200, "video/MP2T", action, ""]
+
+
+if __name__ == '__main__':
+    spider = Spider()
+    res = spider.categoryContent('4', '1', None, {})
+    # res = spider.playerContent(None, '226106-2-25', None)
+    print(json.dumps(res, ensure_ascii=False))
+    pass
