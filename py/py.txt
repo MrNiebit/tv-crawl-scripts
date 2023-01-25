@@ -26,6 +26,16 @@
 		"filterable": 1,
 		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_cokemv.py"
 	},
+		{
+		"key": "py_yhdm",
+		"name": "Py | 樱花动漫",
+		"type": 3,
+		"api": "py_yhdm",
+		"searchable": 1,
+		"quickSearch": 1,
+		"filterable": 1,
+		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_yhdm.py"
+	},
 	    {
 		"key": "py_czspp",
 		"name": "Py | 厂长",
