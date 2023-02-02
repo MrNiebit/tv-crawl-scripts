@@ -27,6 +27,16 @@
 		"ext": ""
 	},
 	{
+		"key": "py_voflix",
+		"name": "Py | voflix",
+		"type": 3,
+		"api": "py_voflix",
+		"searchable": 1,
+		"quickSearch": 1,
+		"filterable": 1,
+		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_voflix.py"
+    },
+	{
 		"key": "py_cokemv",
 		"name": "Py | COKEMV",
 		"type": 3,
@@ -389,17 +399,6 @@
       "filterable": 0,
       "ext": "https://test.lacknb.cn/tvbox/py/plugin/py_alist.py"
         },
-
-	{
-		"key": "py_voflix",
-		"name": "Py | voflix",
-		"type": 3,
-		"api": "py_voflix",
-		"searchable": 1,
-		"quickSearch": 1,
-		"filterable": 1,
-		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_voflix.py"
-	    },
 	    {
 		"key": "py_xsxp",
 		"name": "Py | 相声小品",
