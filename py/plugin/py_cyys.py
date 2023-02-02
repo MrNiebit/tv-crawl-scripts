@@ -95,9 +95,7 @@ class Spider(Spider):  # 元类 默认的元类 type
     def detailContent(self, array):
         tid = array[0]
         url = 'https://www.30dian.cn/voddetail/{0}.html'.format(tid)
-        header = {
-            "User-Agent": "Mozilla/5.0 (Linux; Android 4.4.2; Nexus 4 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.114 Mobile Safari/537.36"}
-        rsp = self.fetch(url, headers=header)
+        rsp = self.fetch(url, headers=self.header)
         root = self.html(self.cleanText(rsp.text))
         divContent = root.xpath("//div[@class='col-lg-wide-75 col-md-wide-7 col-xs-1 padding-0']")[0]
         title = divContent.xpath(".//div[@class='myui-content__detail']/h1/text()")[0]
@@ -245,6 +243,7 @@ class Spider(Spider):  # 元类 默认的元类 type
 if __name__ == '__main__':
     spider = Spider()
     # res = spider.homeVideoContent()
-    res = spider.categoryContent('4', '1', None, None)
+    # res = spider.categoryContent('4', '1', None, None)
+    res = spider.detailContent(['40836'])
     # res = spider.playerContent(None, '40596-2-1', None)
     print(json.dumps(res, ensure_ascii=False))
