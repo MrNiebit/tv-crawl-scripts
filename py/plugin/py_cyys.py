@@ -67,7 +67,8 @@ class Spider(Spider):  # 元类 默认的元类 type
     def categoryContent(self, tid, pg, filter, extend):
         result = {}
         header = {
-            "User-Agent": "Mozilla/5.0 (Linux; Android 4.4.2; Nexus 4 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.114 Mobile Safari/537.36"}
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36"
+        }
         url = 'https://www.30dian.cn/vodtype/{0}-{1}.html'.format(tid, pg)
         rsp = self.fetch(url, headers=header)
         root = self.html(self.cleanText(rsp.text))
@@ -208,9 +209,8 @@ class Spider(Spider):  # 元类 默认的元类 type
             return {}
         url = 'https://www.30dian.cn/vodplay/{0}.html'.format(id)
         rsp = self.fetch(url, headers=header)
-        root = self.html(self.cleanText(rsp.text))
-        scripts = root.xpath("//div[@class='embed-responsive clearfix']/script[@type='text/javascript']/text()")[0]
-        ukey = re.findall(r"url(.*)url_next", scripts)[0].replace('"', "").replace(',', "").replace(':', "")
+        # json_str = self.regStr(rsp.text, 'player_data=(.*?)<')
+        ukey = re.findall(r"url(.*)url_next", rsp.text)[0].replace('"', "").replace(',', "").replace(':', "")
         purl = urllib.parse.unquote(ukey)
         result["parse"] = 0
         result["playUrl"] = ''
@@ -245,6 +245,6 @@ class Spider(Spider):  # 元类 默认的元类 type
 if __name__ == '__main__':
     spider = Spider()
     # res = spider.homeVideoContent()
-    # res = spider.categoryContent('30', '1', None, None)
-    res = spider.playerContent(None, '67861-1-1', None)
+    res = spider.categoryContent('4', '1', None, None)
+    # res = spider.playerContent(None, '40596-2-1', None)
     print(json.dumps(res, ensure_ascii=False))
