@@ -34,7 +34,7 @@ class Spider(Spider):  # 元类 默认的元类 type
             "连续剧": "lianxuju",
             "动漫": "dongman",
             "综艺": "zongyi",
-            "少儿": "shaoer",
+            "纪录片": "jilupian",
             "音乐": "yinyue"
         }
         classes = []
