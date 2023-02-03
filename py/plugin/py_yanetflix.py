@@ -12,7 +12,7 @@ import base64
 class Spider(Spider):  # 元类 默认的元类 type
 
     def __init__(self):
-        self.home_url = "https://yanetflix.com"
+        self.home_url = "https://yanetflix.tv"
 
     def getName(self):
         return "鸭奈飞"
@@ -343,6 +343,7 @@ if __name__ == '__main__':
     spider = Spider()
     # res = spider.searchContent('龙珠', None)
     # res = spider.detailContent(['56492'])
-    res = spider.playerContent(None, '56492-1-1', None)
+    res = spider.categoryContent('dianying', '1', None, {})
+    # res = spider.playerContent(None, '56492-1-1', None)
     print(json.dumps(res, ensure_ascii=False))
     pass
