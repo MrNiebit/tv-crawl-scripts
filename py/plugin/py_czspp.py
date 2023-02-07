@@ -15,7 +15,7 @@ class Spider(Spider):  # 元类 默认的元类 type
 
     def __init__(self):
         self.cz_header = self.header.copy()
-        self.base_url = 'https://czzy01.com'
+        self.base_url = 'https://czzzu.com'
         self.cz_header['Cookie'] = 'esc_search_captcha=1;'
 
     def init(self, extend=""):
