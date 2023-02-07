@@ -221,7 +221,16 @@ class Spider(Spider):  # 元类 默认的元类 type
         html = rsp.text
         content = self.regStr(html, pat)
         if content == '':
-            return {}
+            play_url = self.regStr(html, 'src="(.*?)" frameborder="0"')
+            return {
+                'parse': 1,
+                'playUrl': play_url,
+                'url': '',
+                'header': {
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36",
+                    "referer": "https://czzzu.com/"
+                }
+            }
         key = self.regStr(html, pat, 2)
         iv = self.regStr(html, pat, 3)
         decontent = self.parseCBC(base64.b64decode(content), key, iv).decode()
@@ -258,6 +267,7 @@ class Spider(Spider):  # 元类 默认的元类 type
 
 if __name__ == '__main__':
     spider = Spider()
-    res = spider.categoryContent('dm', 1, None, None)
+    # res = spider.categoryContent('dm', 1, None, None)
+    res = spider.playerContent(None, 'bXZfODQ1MC1ubV8x', None)
     print(json.dumps(res, ensure_ascii=False))
     pass
