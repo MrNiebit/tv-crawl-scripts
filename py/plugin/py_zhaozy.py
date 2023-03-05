@@ -82,4 +82,5 @@ class Spider(Spider):
 	header = {}
 
 	def localProxy(self,param):
+		action = {}
 		return [200, "video/MP2T", action, ""]

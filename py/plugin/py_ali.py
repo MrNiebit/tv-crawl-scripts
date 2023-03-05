@@ -385,13 +385,16 @@ class Spider(Spider):  # 元类 默认的元类 type
 
 		for item in arrayList:
 			self.listFiles(map,shareId,shareToken,item)
+	def get_ali_token(self):
+		with open('../../jar/alitoken.txt') as f:
+			return f.read().strip()
 
 	def login(self):
 		self.localTime = int(time.time())
 		url = 'https://api.aliyundrive.com/token/refresh'
 		if len(self.authorization) == 0 or self.timeoutTick - self.localTime <= 600:
 			form = {
-				'refresh_token':'3865f0ab8f124688ad786a262af9b940'
+				'refresh_token': self.get_ali_token()
 			}
 			rsp = requests.post(url,json = form,headers=self.header)
 			jo = json.loads(rsp.text)
