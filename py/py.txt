@@ -585,7 +585,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 0,
-            "ext": "https://test.lacknb.cn/tvbox/py/plugin/py_upso.py",
+            "ext": "https://test.lacknb.cn/tvbox/py/plugin/py_upso.py"
         },
         {
             "key": "drpy_js_榜单荐片2",
