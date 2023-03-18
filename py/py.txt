@@ -585,8 +585,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 0,
-            "ext": "http://ali.饭太硬.ml/tok",
-            "jar": "https://test.lacknb.cn/tvbox/jar/xzy1029.jar"
+            "ext": "https://test.lacknb.cn/tvbox/py/plugin/py_upso.py",
         },
         {
             "key": "drpy_js_榜单荐片2",
