@@ -527,7 +527,7 @@ if __name__ == '__main__':
     spider = Spider()
     # flag = spider.login()
     # print(flag)
-    # res = spider.detailContent(['https://www.aliyundrive.com/s/VczWSebsqxG/folder/63ef9505c2f7627cdcff439da5f12b83f3aaedc2'])
-    res = spider.playerContent('AliYun原画', 'VczWSebsqxG+eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21Kc29uIjoie1wiZG9tYWluX2lkXCI6XCJiajI5XCIsXCJzaGFyZV9pZFwiOlwiVmN6V1NlYnNxeEdcIixcImNyZWF0b3JcIjpcImQ5MDAzZDlkMTVjODQxZTk5NjgwYmM4YWMzOGFlMTA2XCIsXCJ1c2VyX2lkXCI6XCJhbm9ueW1vdXNcIn0iLCJjdXN0b21UeXBlIjoic2hhcmVfbGluayIsImV4cCI6MTY3OTE5NTQ2MCwiaWF0IjoxNjc5MTg4MjAwfQ.PsPd9NEAIQDV8scvrObrVtGFwCIfwy055V6_kDzcyKATxQL_sg_3VgZVmvvQhn2HTTQGJrxF1iaoGzBvLD-aPyOzXT2gGefm8inXIjJYuwJvRpEQnLsChn7mNnl6_hDo3AJ9_IuPnmTGa7kz_EEmxgHbvl4K6JKZE1nD2ThnCoc+63ef951d235466871eb64cdfb578a85f5a6a4de1+video+', {})
+    res = spider.detailContent(['https://www.aliyundrive.com/s/VczWSebsqxG/folder/63ef9505c2f7627cdcff439da5f12b83f3aaedc2'])
+    # res = spider.playerContent('AliYun原画', 'VczWSebsqxG+eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21Kc29uIjoie1wiZG9tYWluX2lkXCI6XCJiajI5XCIsXCJzaGFyZV9pZFwiOlwiVmN6V1NlYnNxeEdcIixcImNyZWF0b3JcIjpcImQ5MDAzZDlkMTVjODQxZTk5NjgwYmM4YWMzOGFlMTA2XCIsXCJ1c2VyX2lkXCI6XCJhbm9ueW1vdXNcIn0iLCJjdXN0b21UeXBlIjoic2hhcmVfbGluayIsImV4cCI6MTY3OTE5NTQ2MCwiaWF0IjoxNjc5MTg4MjAwfQ.PsPd9NEAIQDV8scvrObrVtGFwCIfwy055V6_kDzcyKATxQL_sg_3VgZVmvvQhn2HTTQGJrxF1iaoGzBvLD-aPyOzXT2gGefm8inXIjJYuwJvRpEQnLsChn7mNnl6_hDo3AJ9_IuPnmTGa7kz_EEmxgHbvl4K6JKZE1nD2ThnCoc+63ef951d235466871eb64cdfb578a85f5a6a4de1+video+', {})
     print(json.dumps(res, ensure_ascii=False))
     pass
