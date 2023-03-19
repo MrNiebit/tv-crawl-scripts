@@ -293,143 +293,7 @@
             "filterable" : 1,
             "ext" : "https://test.lacknb.cn/tvbox/py/plugin/py_Yinl2.py"
         },
-
-    {
-		"key": "py_bilimd",
-		"name": "Py | B站影视",
-		"type": 3,
-		"api": "py_bilimd",
-		"searchable": 1,
-		"quickSearch": 1,
-		"filterable": 1,
-		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_bilimd.py"
-	},
-
 	    {
-            "key" : "py_yixi",
-            "name" : "Py | 一席话",
-            "type" : 3,
-            "api" : "py_yixi",
-            "searchable" : 1,
-            "quickSearch" : 1,
-            "filterable" : 1,
-            "ext" : "https://test.lacknb.cn/tvbox/py/plugin/py_yixi.py"
-        },
-        {
-		"key": "py_huya",
-		"name": "Py | 虎牙",
-		"type": 3,
-		"api": "py_huya",
-		"searchable": 0,
-		"quickSearch": 0,
-		"filterable": 1,
-		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_huya.py"
-	},
-     {
-		"key": "py_douyu",
-		"name": "Py | 斗鱼",
-		"type": 3,
-		"api": "py_douyu",
-		"searchable": 0,
-		"quickSearch": 0,
-		"filterable": 1,
-		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_douyu.py"
-	},
-
-	{
-		"key": "py_jrskbs",
-		"name": "Py | JRS直播",
-		"type": 3,
-		"api": "py_jrskbs",
-		"searchable": 0,
-		"quickSearch": 0,
-		"filterable": 1,
-		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_jrskbs.py"
-	},
-
- {
-		"key": "py_xmly",
-		"name": "Py | 喜马拉雅",
-		"type": 3,
-		"api": "py_xmly",
-		"searchable": 0,
-		"quickSearch": 0,
-		"filterable": 1,
-		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_xmly.py"
-	},
-
-
-	{
-		"key": "py_bilibili",
-		"name": "Py | 哔哩",
-		"type": 3,
-		"api": "py_bilibili",
-		"searchable": 0,
-		"quickSearch": 0,
-		"filterable": 1,
-		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_bilibili.py"
-	},
-     {
-		"key": "py_bilivd",
-		"name": "Py | B站(带搜索)",
-		"type": 3,
-		"api": "py_bilivd",
-		"searchable": 0,
-		"quickSearch": 0,
-		"filterable": 1,
-		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_bilivd.py"
-	},{
-		"key": "py_3qu",
-		"name": "Py | 3QU",
-		"type": 3,
-		"api": "py_3qu",
-		"searchable": 1,
-		"quickSearch": 1,
-		"filterable": 1,
-		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_3qu.py"
-	},
-
-        {
-      "key": "py_Alist",
-      "name": "Py | Alist合集",
-      "type": 3,
-      "api": "py_alist",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 0,
-      "ext": "https://test.lacknb.cn/tvbox/py/plugin/py_alist.py"
-        },
-	    {
-		"key": "py_xsxp",
-		"name": "Py | 相声小品",
-		"type": 3,
-		"api": "py_相声小品",
-		"searchable": 1,
-		"quickSearch": 1,
-		"filterable": 1,
-		"ext": "https://test.lacknb.cn/tvbox/py/plugin/相声小品.py"
-	    },
-	  {
-		"key": "py_音乐合集",
-		"name": "Py | 音乐合集",
-		"type": 3,
-		"api": "py_音乐合集",
-		"searchable": 1,
-		"quickSearch": 1,
-		"filterable": 1,
-		"ext": "https://test.lacknb.cn/tvbox/py/plugin/音乐合集.py"
-	    },
-	{
-		"key": "xxxxx3",
-		"name": "👑央视专栏👑",
-		"type": 3,
-		"api": "xxxx3",
-		"searchable": 0,
-		"quickSearch": 0,
-		"filterable": 0,
-		"ext": ""
-	},
-    {
 		"key": "py_cctv2",
 		"name": "Py | 央视2",
 		"type": 3,
@@ -551,6 +415,212 @@
             "ext" : "https://test.lacknb.cn/tvbox/py/plugin/py_cctvzy.py"
         },
 
+    	{
+		"key": "py_lezhu",
+		"name": "Py | 乐猪",
+		"type": 3,
+		"api": "py_lezhu",
+		"searchable": 1,
+		"quickSearch": 1,
+		"filterable": 1,
+		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_lezhu.py"
+	},
+   	{
+		"key": "py_cyys",
+		"name": "Py | 创艺",
+		"type": 3,
+		"api": "py_cyys",
+		"searchable": 1,
+		"quickSearch": 1,
+		"filterable": 1,
+		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_cyys.py"
+	},
+
+	{
+		"key": "py_wmkk",
+		"name": "Py | 完美看看(半残)",
+		"type": 3,
+		"api": "py_wmkk",
+		"searchable": 1,
+		"quickSearch": 1,
+		"filterable": 1,
+		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_wmkk.py"
+	},
+
+    {
+		"key": "py_bilimd",
+		"name": "Py | B站影视",
+		"type": 3,
+		"api": "py_bilimd",
+		"searchable": 1,
+		"quickSearch": 1,
+		"filterable": 1,
+		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_bilimd.py"
+	},
+	 {
+		"key": "py_genmov",
+		"name": "Py | 跟剧",
+		"type": 3,
+		"api": "py_genmov",
+		"searchable": 1,
+		"quickSearch": 1,
+		"filterable": 1,
+		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_genmov.py"
+	},
+	    {
+            "key" : "py_yixi",
+            "name" : "Py | 一席话",
+            "type" : 3,
+            "api" : "py_yixi",
+            "searchable" : 1,
+            "quickSearch" : 1,
+            "filterable" : 1,
+            "ext" : "https://test.lacknb.cn/tvbox/py/plugin/py_yixi.py"
+        },
+        {
+		"key": "py_huya",
+		"name": "Py | 虎牙",
+		"type": 3,
+		"api": "py_huya",
+		"searchable": 0,
+		"quickSearch": 0,
+		"filterable": 1,
+		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_huya.py"
+	},
+     {
+		"key": "py_douyu",
+		"name": "Py | 斗鱼",
+		"type": 3,
+		"api": "py_douyu",
+		"searchable": 0,
+		"quickSearch": 0,
+		"filterable": 1,
+		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_douyu.py"
+	},
+
+	{
+		"key": "py_jrskbs",
+		"name": "Py | JRS直播",
+		"type": 3,
+		"api": "py_jrskbs",
+		"searchable": 0,
+		"quickSearch": 0,
+		"filterable": 1,
+		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_jrskbs.py"
+	},
+
+ {
+		"key": "py_xmly",
+		"name": "Py | 喜马拉雅",
+		"type": 3,
+		"api": "py_xmly",
+		"searchable": 0,
+		"quickSearch": 0,
+		"filterable": 1,
+		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_xmly.py"
+	},
+	{
+		"key": "py_libvio",
+		"name": "Py | LIbvio",
+		"type": 3,
+		"api": "py_libvio",
+		"searchable": 1,
+		"quickSearch": 1,
+		"filterable": 1,
+		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_libvio.py"
+	},
+
+	{
+		"key": "py_bilibili",
+		"name": "Py | 哔哩",
+		"type": 3,
+		"api": "py_bilibili",
+		"searchable": 0,
+		"quickSearch": 0,
+		"filterable": 1,
+		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_bilibili.py"
+	},
+     {
+		"key": "py_bilivd",
+		"name": "Py | B站(带搜索)",
+		"type": 3,
+		"api": "py_bilivd",
+		"searchable": 0,
+		"quickSearch": 0,
+		"filterable": 1,
+		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_bilivd.py"
+	},{
+		"key": "py_3qu",
+		"name": "Py | 3QU",
+		"type": 3,
+		"api": "py_3qu",
+		"searchable": 1,
+		"quickSearch": 1,
+		"filterable": 1,
+		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_3qu.py"
+	},
+
+        {
+      "key": "py_Alist",
+      "name": "Py | Alist合集",
+      "type": 3,
+      "api": "py_alist",
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 0,
+      "ext": "https://test.lacknb.cn/tvbox/py/plugin/py_alist.py"
+        },
+    {
+		"key": "py_czspp",
+		"name": "Py | 厂长",
+		"type": 3,
+		"api": "py_czspp",
+		"searchable": 1,
+		"quickSearch": 1,
+		"filterable": 1,
+		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_czspp.py"
+	},
+
+    {
+		"key": "py_gimytv",
+		"name": "Py | 剧迷",
+		"type": 3,
+		"api": "py_gimytv",
+		"searchable": 1,
+		"quickSearch": 1,
+		"filterable": 1,
+		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_gimytv.py"
+	},
+	{
+		"key": "py_voflix",
+		"name": "Py | voflix",
+		"type": 3,
+		"api": "py_voflix",
+		"searchable": 1,
+		"quickSearch": 1,
+		"filterable": 1,
+		"ext": "https://test.lacknb.cn/tvbox/py/plugin/py_voflix.py"
+	    },
+	    {
+		"key": "py_xsxp",
+		"name": "Py | 相声小品",
+		"type": 3,
+		"api": "py_相声小品",
+		"searchable": 1,
+		"quickSearch": 1,
+		"filterable": 1,
+		"ext": "https://test.lacknb.cn/tvbox/py/plugin/相声小品.py"
+	    },
+	  {
+		"key": "py_音乐合集",
+		"name": "Py | 音乐合集",
+		"type": 3,
+		"api": "py_音乐合集",
+		"searchable": 1,
+		"quickSearch": 1,
+		"filterable": 1,
+		"ext": "https://test.lacknb.cn/tvbox/py/plugin/音乐合集.py"
+	    },
     {"key":"Gitcafe2","name":"阿里纸条","type":"3","api":"csp_Gitcafe","searchable":"1","quickSearch":"1","filterable":"1","ext":"https://test.lacknb.cn/tvbox/jar/alitoken.txt","jar":"https://share.nite07.com/api/v3/file/source/32180/bhioodmh.jar?sign=fT6PTHJR7YVw_FgAn0JdAbdhWGo628lESMFre58anMw%3D%3A0"},
 	{"key":"Yisou","name":"易搜(仅搜索)","type":3,"api":"csp_Yisou","playerType":1,"searchable":1,"quickSearch":1,"filterable":0,"ext":"https://test.lacknb.cn/tvbox/jar/alitoken.txt","jar": "https://test.lacknb.cn/tvbox/jar/xzy1029.jar"},
     {"key":"AliPS","name":"盘搜(仅搜索)","type":3,"api":"csp_AliPS","searchable":1,"playerType":1,"quickSearch":1,"filterable":1,"ext": "https://test.lacknb.cn/tvbox/jar/alitoken.txt","jar": "https://test.lacknb.cn/tvbox/jar/xzy1029.jar"},

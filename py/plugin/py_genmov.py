@@ -10,7 +10,7 @@ from urllib.parse import quote, unquote
 
 class Spider(Spider):  # 元类 默认的元类 type
     def __init__(self):
-        self.home_url = "https://www.52gen.com"
+        self.home_url = "https://www.52gen.top"
 
     def getName(self):
         return "我爱跟剧"

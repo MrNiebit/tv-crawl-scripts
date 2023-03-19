@@ -15,7 +15,14 @@ class Spider(Spider):  # 元类 默认的元类 type
         return "Cokemv"
 
     def __init__(self):
-        self.home_url = 'https://cokemv.me'
+        self.home_url = 'https://cokemv.co'
+        self.header = {
+            "origin": self.home_url,
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36",
+            "Accept": " */*",
+            "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.3,en;q=0.7",
+            "Accept-Encoding": "gzip, deflate"
+        }
 
     def init(self, extend=""):
         print("============{0}============".format(extend))
@@ -43,7 +50,7 @@ class Spider(Spider):  # 元类 默认的元类 type
         return result
 
     def homeVideoContent(self):
-        rsp = self.fetch("https://cokemv.me/")
+        rsp = self.fetch(self.home_url)
         root = self.html(rsp.text)
         aList = root.xpath("//div[@class='main']//div[contains(@class,'module-items')]/a")
 
@@ -74,7 +81,7 @@ class Spider(Spider):  # 元类 默认的元类 type
         for key in extend:
             urlParams[int(key)] = extend[key]
         params = '-'.join(urlParams)
-        url = 'https://cokemv.me/vodshow/{0}.html'.format(params)
+        url = self.home_url + '/vodshow/{0}.html'.format(params)
         rsp = self.fetch(url)
         root = self.html(rsp.text)
         aList = root.xpath('//div[@class="content"]/div[@class="module"]/a')
@@ -101,7 +108,7 @@ class Spider(Spider):  # 元类 默认的元类 type
 
     def detailContent(self, array):
         tid = array[0]
-        url = 'https://cokemv.me/voddetail/{0}.html'.format(tid)
+        url = self.home_url + '/voddetail/{0}.html'.format(tid)
         rsp = self.fetch(url)
         root = self.html(rsp.text)
         divContent = root.xpath("//div[@class='module-info-main']")[0]
@@ -168,9 +175,9 @@ class Spider(Spider):  # 元类 默认的元类 type
         while retry:
             try:
                 session = requests.session()
-                img = session.get('https://cokemv.me/index.php/verify/index.html?', headers=header).content
+                img = session.get(self.home_url + '/index.php/verify/index.html?', headers=header).content
                 code = session.post('https://api.nn.ci/ocr/b64/text', data=base64.b64encode(img).decode()).text
-                res = session.post(url=f"https://cokemv.me/index.php/ajax/verify_check?type=search&verify={code}",
+                res = session.post(url=self.home_url + f"/index.php/ajax/verify_check?type=search&verify={code}",
                                    headers=header).json()
                 if res["msg"] == "ok":
                     return session
@@ -180,7 +187,7 @@ class Spider(Spider):  # 元类 默认的元类 type
                 retry = retry - 1
 
     def searchContent(self, key, quick):
-        url = 'https://cokemv.me/vodsearch/-------------.html?wd={0}'.format(key)
+        url = self.home_url + '/vodsearch/-------------.html?wd={0}'.format(key)
         session = self.verifyCode(url)
         rsp = session.get(url)
         root = self.html(rsp.text)
@@ -245,13 +252,13 @@ class Spider(Spider):  # 元类 默认的元类 type
                 "show": "采集路线",
                 "des": "",
                 "ps": "0",
-                "parse": "https:\/\/cd.cokemv.me\/player\/?url="
+                "parse": "https://cokemv.co/player\/?url="
             },
             "if101": {
                 "show": "海外(禁國內)",
                 "des": "",
                 "ps": "0",
-                "parse": "https:\/\/cd.cokemv.me\/player\/?url="
+                "parse": "https://cokemv.co/player\/?url="
             },
             "777_": {
                 "show": "十三號線路",
@@ -507,16 +514,10 @@ class Spider(Spider):  # 元类 默认的元类 type
                 {"key": 2, "name": "排序",
                  "value": [{"n": " 时间排序", "v": "time"}, {"n": "人气排序", "v": "hits"}, {"n": "评分排序", "v": "score"}]}]}
     }
-    header = {
-        "origin": "https://cokemv.me",
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36",
-        "Accept": " */*",
-        "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.3,en;q=0.7",
-        "Accept-Encoding": "gzip, deflate"
-    }
+
 
     def playerContent(self, flag, id, vipFlags):
-        url = 'https://cokemv.me/vodplay/{0}.html'.format(id)
+        url = self.home_url + '/vodplay/{0}.html'.format(id)
         rsp = self.fetch(url)
         result = {}
         jo_str = self.regStr(rsp.text, 'player_aaaa=(.*?)<')
@@ -558,7 +559,7 @@ class Spider(Spider):  # 元类 默认的元类 type
 if __name__ == '__main__':
     spider = Spider()
     # res = spider.homeVideoContent()
-    res = spider.categoryContent('5', '1', None, [])
+    # res = spider.categoryContent('1', '1', None, [])
     # res = spider.detailContent(['775'])
-    # res = spider.playerContent(None, '1194-3-1', None)
+    res = spider.playerContent(None, '1194-3-1', None)
     print(json.dumps(res, ensure_ascii=False))
