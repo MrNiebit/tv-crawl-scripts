@@ -428,6 +428,8 @@ class Spider(Spider):  # 元类 默认的元类 type
                 break
             params['marker'] = maker
             rsp = requests.post(url, json=params, headers=newHeader)
+            if rsp.status_code != 200:
+                continue
             jo = json.loads(rsp.text)
             ja = jo['items']
             if dirname != '':
@@ -449,7 +451,6 @@ class Spider(Spider):  # 元类 默认的元类 type
                                                                                                   '')[0:-1] + remark
                         subtitle[repStr] = jt['file_id']
             maker = jo['next_marker']
-            i = i + 1
         for item in arrayList:
             if '@@@' in item:
                 items = item.split('@@@')
@@ -457,13 +458,14 @@ class Spider(Spider):  # 元类 默认的元类 type
                 dirname = items[1]
             self.listFiles(map, shareId, shareToken, item, dirname, subtitle)
         for key in map.keys():
+            original_key = key
             if ']|' in key:
                 key = key.split(']|')[1].split('/[')[0]
             for subKey in subtitle.keys():
                 if ']|' in subKey:
                     subKey = subKey.split(']|')[1].split('/[')[0]
-                if key in subKey and map[key][-1] == "+":
-                    map[key] = map[key] + subtitle[subKey]
+                if key in subKey and map[original_key][-1] == "+":
+                    map[original_key] = map[original_key] + subtitle[subKey]
                     break
 
     def login(self):
@@ -523,6 +525,9 @@ class Spider(Spider):  # 元类 默认的元类 type
 
 if __name__ == '__main__':
     spider = Spider()
-    flag = spider.login()
-    print(flag)
+    # flag = spider.login()
+    # print(flag)
+    # res = spider.detailContent(['https://www.aliyundrive.com/s/VczWSebsqxG/folder/63ef9505c2f7627cdcff439da5f12b83f3aaedc2'])
+    res = spider.playerContent('AliYun原画', 'VczWSebsqxG+eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21Kc29uIjoie1wiZG9tYWluX2lkXCI6XCJiajI5XCIsXCJzaGFyZV9pZFwiOlwiVmN6V1NlYnNxeEdcIixcImNyZWF0b3JcIjpcImQ5MDAzZDlkMTVjODQxZTk5NjgwYmM4YWMzOGFlMTA2XCIsXCJ1c2VyX2lkXCI6XCJhbm9ueW1vdXNcIn0iLCJjdXN0b21UeXBlIjoic2hhcmVfbGluayIsImV4cCI6MTY3OTE5NTQ2MCwiaWF0IjoxNjc5MTg4MjAwfQ.PsPd9NEAIQDV8scvrObrVtGFwCIfwy055V6_kDzcyKATxQL_sg_3VgZVmvvQhn2HTTQGJrxF1iaoGzBvLD-aPyOzXT2gGefm8inXIjJYuwJvRpEQnLsChn7mNnl6_hDo3AJ9_IuPnmTGa7kz_EEmxgHbvl4K6JKZE1nD2ThnCoc+63ef951d235466871eb64cdfb578a85f5a6a4de1+video+', {})
+    print(json.dumps(res, ensure_ascii=False))
     pass
